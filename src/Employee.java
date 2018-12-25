@@ -33,5 +33,12 @@ public class Employee {
 		// How to call member functions?
 		e1.calculateSalary();
 		e1.printDetails();
+		
+	}
+	
+	@Override
+	public String toString() {
+		printDetails();
+		return super.toString();
 	}
 }
