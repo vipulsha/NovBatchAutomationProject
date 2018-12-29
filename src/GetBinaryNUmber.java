@@ -12,6 +12,6 @@ public class GetBinaryNUmber {
 	}
 	public static void main(String[] args) {
 		GetBinaryNUmber num = new GetBinaryNUmber();
-		num.reverseBinary(10);
+		num.reverseBinary(42);
 	}
 }

@@ -57,7 +57,7 @@ public class FirstPatternProg {
 		   4321
 		==================================
 		*/
-		int n =5;
+		int n =4;
 		for(int row=1;row<=n;row++) {
 			for(int space=1; space<=(n-row);space++) {
 				System.out.print(" ");

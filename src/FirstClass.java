@@ -1,4 +1,3 @@
-import com.google.gmail.ClassInPackage;
 
 public class FirstClass {
 
@@ -6,6 +5,6 @@ public class FirstClass {
 		System.out.println("Hello World");
 		System.out.println("Hello");
 		
-		ClassInPackage c = new ClassInPackage();
+		//ClassInPackage c = new ClassInPackage();
 	}
 }
