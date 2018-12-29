@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class MathOperations {
-	public int add(int a, int b) {
+	public static int add(int a, int b) {
 		return a+b;
 	}
 	
@@ -46,7 +46,7 @@ public class MathOperations {
 		default:
 			System.out.println("Invalid option selected");
 		case 1:
-			result = operations.add(no1, no2);
+			result = add(no1, no2);
 			break;
 		case 2:
 			result = operations.sub(no1, no2);
