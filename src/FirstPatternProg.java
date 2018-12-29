@@ -50,5 +50,22 @@ public class FirstPatternProg {
 			}
 			System.out.println();
 		}*/
+		/*=================================
+		 *    1
+  			 21
+ 			321
+		   4321
+		==================================
+		*/
+		int n =5;
+		for(int row=1;row<=n;row++) {
+			for(int space=1; space<=(n-row);space++) {
+				System.out.print(" ");
+			}
+			for (int no=row; no>=1;no--) {
+				System.out.print(no);
+			}
+			System.out.println();
+		}
 	}
 }
