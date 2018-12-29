@@ -1,7 +1,5 @@
-
 public class CircleArea {
 	int radius;
-	
 	public CircleArea() {
 		// TODO Auto-generated constructor stub
 		System.out.println("I m in parameterless constructor");
