@@ -1,19 +1,19 @@
 
-public class Rectangle {
+public class Rectangle1 {
 
 	// Data members (instance variables)
 	public int length;
 	int width;
 	
 	// Parameterless constructor
-	public Rectangle() {
+	public Rectangle1() {
 		System.out.println("in paraless constr");
 		length = 5;
 		width = 10;
 	}
 	
 	// Parameterized constructors
-	public Rectangle(int l, int w) {
+	public Rectangle1(int l, int w) {
 		System.out.println("in parameterized constr");
 		length = l;
 		width = w;
@@ -26,12 +26,12 @@ public class Rectangle {
 	
 	public static void main(String[] args) {
 		// Create Object
-		Rectangle o = new Rectangle();
+		Rectangle1 o = new Rectangle1();
 //		o.length = 10; // Initializing data member
 //		o.width = 20;
 		o.calculateArea();
 
-		Rectangle o2 = new Rectangle(30, 40);
+		Rectangle1 o2 = new Rectangle1(30, 40);
 		o2.calculateArea();
 		o2.length = 60;
 		o2.width = 70;

@@ -1,15 +1,14 @@
 
 class A {
 	int a;
-	
-	
-	
 	public void someTest() {
+		int b;
+		
+		
+//		this.b = 10;
 		
 	}
 } 
-
-
 
 class B extends A {
 	int a;
