@@ -3,18 +3,18 @@ public class QA extends Employee {
 	String testingType;
 	boolean isISTQBCertified;
 	
-	public QA(int empId, String empName, String empDept, int empSal, int noOfYearsOfExp,String testingType, boolean isISTQBCertified) {
+	/*public QA(int empId, String empName, String empDept, int empSal, int noOfYearsOfExp,String testingType, boolean isISTQBCertified) {
 		super(empId, empName, empDept, empSal, noOfYearsOfExp);
-/*		
+		
 		this.setEmpId(empId);
 		this.setEmpName(empName);
 		this.empDept = empDept;
 		this.empSal = empSal;
 		this.noOfYearsOfExp = this.noOfYearsOfExp;
-*/		
+		
 		this.testingType = testingType;
 		this.isISTQBCertified = isISTQBCertified;
-	}
+	}*/
 	
 	public String getTestingType() {
 		return testingType;

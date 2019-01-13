@@ -7,6 +7,30 @@ import java.io.FileReader;
 import com.google.Employee;
 
 public class ExceptionDemo {
+	
+	@Override
+	protected void finalize() throws Throwable {
+		System.out.println("in finalize");
+	}
+	
+	public static int test2() {
+		
+		ExceptionDemo d = new ExceptionDemo();
+		int a = 10/0;
+		
+		try {
+			//
+			//
+			///
+			//
+			System.exit(0);
+		} catch (Exception e) {
+			
+		} finally {
+			 System.out.println("In finally");
+		}
+		return 1;		
+	}
 
 	public static void test() {
 		File f = new File("C:\\Vipul\\test.txt");
@@ -64,7 +88,7 @@ public class ExceptionDemo {
 	
 	
 	public static void main(String[] args) {
-		test();
+/*		test();
 		int a = 10;
 		int b = 0 ;
 		try {
@@ -74,6 +98,10 @@ public class ExceptionDemo {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println(b);
+		System.out.println(b);*/
+		
+		int v = test2();
+		System.out.println(v);
+		
 	}
 }
