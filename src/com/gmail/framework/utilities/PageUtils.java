@@ -2,12 +2,15 @@ package com.gmail.framework.utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageUtils {
 	public enum ElementCondition {VISIBLE,CLICKABLE};
-	WebDriverWait wait = null;
+	protected static WebDriverWait wait = null;
+	@FindBy(xpath="//span[@class='bAq']") WebElement notificationMessage;
 	
 	public PageUtils(WebDriver driver) {
 		wait = new WebDriverWait(driver, 30);
@@ -20,16 +23,29 @@ public class PageUtils {
 			break;
 		case CLICKABLE:
 			wait.until(ExpectedConditions.elementToBeClickable(element));
-			break;
 		}
 	}
 	
 	public void click(WebElement element) {
 		waitForElement(element, ElementCondition.CLICKABLE);
+		element.click();
 	}
 
 	public void enterText(WebElement element, String text) {
 		waitForElement(element, ElementCondition.VISIBLE);
 		element.sendKeys(text);
+	}
+	
+	public static boolean isUserLoggedIn(String emailId) {
+		return wait.until(ExpectedConditions.titleContains(emailId));
+	}
+	
+	public String getText(WebElement element) {
+		waitForElement(element, ElementCondition.VISIBLE);
+		return element.getText();
+	}
+	
+	public boolean isMessageDisplayed(String message) {
+		return wait.until(ExpectedConditions.textToBePresentInElement(notificationMessage, message));
 	}
 }

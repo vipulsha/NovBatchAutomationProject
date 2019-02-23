@@ -10,12 +10,14 @@ import com.gmail.framework.utilities.PageUtils;
 public class LoginPage extends PageUtils {
 
 	// Data Members
+	WebDriver driver;
 	@FindBy(id="identifierId") WebElement usernameTextbox;
 	@FindBy(xpath="//span[text()='Next']") WebElement nextButton;
 	@FindBy(name="password") WebElement passwordTextbox;
 	
 	public LoginPage(WebDriver driver) {
 		super(driver);
+		this.driver = driver;
 		// initialize data members
 		PageFactory.initElements(driver, this);
 	}
@@ -38,4 +40,17 @@ public class LoginPage extends PageUtils {
 //		nextButton.click();
 		click(nextButton);
 	}	
+	
+	/**
+	 * Method to login
+	 * @param userName - email id
+	 * @param password - password
+	 */
+	public InboxPage login(String userName, String password) {
+		setUsername(userName);
+		clickNextButton();
+		setPassword(password);
+		clickNextButton();
+		return new InboxPage(driver);
+	}
 }
