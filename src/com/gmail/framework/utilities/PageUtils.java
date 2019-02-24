@@ -1,5 +1,6 @@
 package com.gmail.framework.utilities;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,12 +27,22 @@ public class PageUtils {
 		}
 	}
 	
-	public void click(WebElement element) {
+	public WebElement waitForElement(By by, ElementCondition condition) {
+		switch (condition) {
+		case VISIBLE:
+			return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+		case CLICKABLE:
+			return wait.until(ExpectedConditions.elementToBeClickable(by));
+		}
+		return null;
+	}
+	
+	protected void click(WebElement element) {
 		waitForElement(element, ElementCondition.CLICKABLE);
 		element.click();
 	}
 
-	public void enterText(WebElement element, String text) {
+	protected void enterText(WebElement element, String text) {
 		waitForElement(element, ElementCondition.VISIBLE);
 		element.sendKeys(text);
 	}
@@ -48,4 +59,9 @@ public class PageUtils {
 	public boolean isMessageDisplayed(String message) {
 		return wait.until(ExpectedConditions.textToBePresentInElement(notificationMessage, message));
 	}
-}
+	
+	public WebElement getDynamicWebElement(String rawXpath, String textToReplace, String dynamicText, ElementCondition condition) {
+		String finalXpath = rawXpath.replace(textToReplace, dynamicText);
+		return waitForElement(By.xpath(finalXpath), condition);
+	}
+ }
