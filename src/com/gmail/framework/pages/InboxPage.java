@@ -30,8 +30,6 @@ public class InboxPage extends PageUtils {
 	WebElement bCCTextbox;
 	@FindBy(xpath="//div[@class='T-I J-J5-Ji nX T-I-ax7 T-I-Js-Gs mA']")
 	WebElement deleteButton;
-	private static final String EMAIL_SUBJECT_XPATH = "//span[@class='bog']/span[text()='textToReplace']";
-	private static final String EMAIL_CHECKBOX_RAW_XPATH = EMAIL_SUBJECT_XPATH+"/ancestor::tr/td/div[@role='checkbox']";
 	
 	public InboxPage(WebDriver driver) {
 		super(driver);
@@ -73,16 +71,6 @@ public class InboxPage extends PageUtils {
 		click(sendButton);
 	}
 
-	public void selectEmail(String subject) {
-		WebElement emailCheckbox = getDynamicWebElement(EMAIL_CHECKBOX_RAW_XPATH, "textToReplace", subject, ElementCondition.CLICKABLE);
-		click(emailCheckbox);
-	}
-	
-	public void openEmail(String subject) {
-		WebElement email = getDynamicWebElement(EMAIL_SUBJECT_XPATH, "textToReplace", subject, ElementCondition.CLICKABLE);
-		click(email);
-	}
-	
 	public void clickDeleteButton() {
 		click(deleteButton);
 	}
