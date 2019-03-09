@@ -1,6 +1,7 @@
 package com.gmail.framework.utilities;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,9 +13,11 @@ public class PageUtils {
 	public enum ElementCondition {VISIBLE,CLICKABLE};
 	protected static WebDriverWait wait = null;
 	@FindBy(xpath="//span[@class='bAq']") WebElement notificationMessage;
-	
+	JavascriptExecutor executor = null;
+			
 	public PageUtils(WebDriver driver) {
 		wait = new WebDriverWait(driver, 30);
+		executor = (JavascriptExecutor) driver;
 	}
 	
 	public void waitForElement(WebElement element, ElementCondition condition) {
@@ -39,11 +42,13 @@ public class PageUtils {
 	
 	protected void click(WebElement element) {
 		waitForElement(element, ElementCondition.CLICKABLE);
+		hightlighElement(element);
 		element.click();
 	}
 
 	protected void enterText(WebElement element, String text) {
 		waitForElement(element, ElementCondition.VISIBLE);
+		hightlighElement(element);
 		element.sendKeys(text);
 	}
 	
@@ -63,5 +68,17 @@ public class PageUtils {
 	public WebElement getDynamicWebElement(String rawXpath, String textToReplace, String dynamicText, ElementCondition condition) {
 		String finalXpath = rawXpath.replace(textToReplace, dynamicText);
 		return waitForElement(By.xpath(finalXpath), condition);
+	}
+	
+	public void hightlighElement(WebElement element) {
+		for (int i = 1; i <= 3; i++) {
+			try {
+				executor.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "border: solid; border-color: #2BD12B;");
+				Thread.sleep(500);
+				executor.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "");
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+			}
+		}
 	}
  }
