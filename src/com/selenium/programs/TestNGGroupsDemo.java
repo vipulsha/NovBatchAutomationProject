@@ -1,5 +1,6 @@
 package com.selenium.programs;
 
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
 public class TestNGGroupsDemo {
@@ -14,6 +15,9 @@ public class TestNGGroupsDemo {
 		System.out.println("In testSendingEmail");
 	}
 	
-	
+	@BeforeGroups(groups="REGRESSION")
+	public void beforeGroup() {
+		System.out.println("In beforeGroups");
+	}
 	
 }
